@@ -52,6 +52,7 @@ int onecounter(UINT n)
     return 0;
 }
 
+// Найти номер старшего бита
 int upnumber(UINT n)
 {
     UINT a = 1;
@@ -61,6 +62,55 @@ int upnumber(UINT n)
         c++;
         n = n - (n/2 + (n&a));
     }
-    std::cout << "Nomer starshego bita = " << c << std::endl;
+    std::cout << "Nomer starshego bita = " << c-1 << std::endl;
     return 0;
 }
+
+// число n, где i-й бит = 1
+// оставил bitset для проверки.
+int replacei(UINT n, UINT i)
+{
+    i = 1 << i;
+    // std::cout <<  std::bitset<8>(i) << std::endl;
+    // std::cout <<  std::bitset<8>(n) << std::endl;
+    n = n|i;
+    // std::cout <<  std::bitset<8>(n) << std::endl;
+    std::cout << "n = " << n << std::endl;
+    return 0;
+}
+
+// число n, где i-й бит = 0
+// оставил bitset для проверки.
+int outplacei(UINT n, UINT i)
+{
+    i = 1 << i;
+    i = ~i;
+    // std::cout <<  std::bitset<8>(i) << std::endl;
+    // std::cout <<  std::bitset<8>(n) << std::endl;
+    n = n&i;
+    // std::cout <<  std::bitset<8>(n) << std::endl;
+    std::cout << "n = " << n << std::endl;
+    return 0;
+}
+
+// число n, где i-1 бит отличается
+int diffi(UINT n, UINT i)
+{
+    UINT a = n;
+    UINT s = i;
+    i = 1 << i;         // кусочек outplacei
+    i = ~i;             // кусочек outplacei
+    a = a&i;            // кусочек outplacei
+    if (a != n)
+    {
+        n = a;
+    }
+    else
+    {
+        n = n + (2 << (s -1));
+    }
+
+    std::cout << "n = " << n <<  std::endl;
+    return 0;
+}
+

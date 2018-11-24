@@ -11,4 +11,10 @@ int onecounter(UINT n);
 
 int upnumber(UINT n);
 
+int replacei(UINT n,UINT i);
+
+int outplacei(UINT n, UINT i);
+
+int diffi(UINT n, UINT i);
+
 #endif //POBITOVIE_OPERACII_TASKS_H
